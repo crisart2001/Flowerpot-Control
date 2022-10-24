@@ -19,15 +19,16 @@ sleep_time=900 #15 minutos
 def activar_linea(numero_linea):
     #numero_linea
     try:
-        y = requests.get(url+"Relay/"+numero_linea) #Estado de linea de agua
-        if( y == 'OFF'):
-            command = "Relays/ON/"+numero_linea
-            requests.get(url+command)
-            print('Se activo la linea '+numero_linea)
-            return
-        else :
-            print('La linea '+numero_linea+' ya estaba activa se mantiene asi')
-            return
+        #y = requests.get(url+"Relays/"+numero_linea) #Estado de linea de agua
+        #if( y == 'OFF'):
+        command = "Relays/ON/"+numero_linea
+        requests.get(url+command)
+        print('Se activo la linea '+numero_linea)
+        time.sleep(20)
+        return
+        #else :
+        #    print('La linea '+numero_linea+' ya estaba activa se mantiene asi')
+        #    return
     except:
         print('No se pudo activar la linea'+numero_linea)
         return
@@ -35,15 +36,16 @@ def activar_linea(numero_linea):
 def desactivar_linea(numero_linea):
     try:
         #numero_linea
-        y = requests.get(url+"Relay/"+numero_linea) #Estado de linea de agua
-        if( y == 'ON'):
-            command = "Relays/OFF/"+numero_linea
-            requests.get(url+command)
-            print('Se desactivo la linea '+numero_linea)
-            return
-        else :
-            print('La linea '+numero_linea+' ya estaba desactivada se mantiene asi')
-            return
+        #y = requests.get(url+"Relays/"+numero_linea) #Estado de linea de agua
+        #if( y == 'ON'):
+        command = "Relays/OFF/"+numero_linea
+        requests.get(url+command)
+        print('Se desactivo la linea '+numero_linea)
+        time.sleep(20)
+        return
+        #else :
+        #    print('La linea '+numero_linea+' ya estaba desactivada se mantiene asi')
+        #    return
     except:
         print('No se pudo desactivar la linea'+numero_linea)
         return
@@ -113,7 +115,7 @@ def lectura_0F_con_promedios():
             prom_2=None
             
         #Masetas 45,46,47
-        try:
+        """"try:
             x = requests.get(url+"LastHumidity/M")
             x = json.loads(x.text)
             try:
@@ -135,9 +137,9 @@ def lectura_0F_con_promedios():
                 valores[2]=None
         except:
             valores[1]=None
-            valores[2]=None
+            valores[2]=None"""
         try:
-            prom_3=mean(d for d in valores if d is not None)
+            prom_3=None#mean(d for d in valores if d is not None)
             print(prom_3)
         except:
             prom_3=None
@@ -218,7 +220,7 @@ def lectura_1F_con_promedios():
             prom_2=None
             
         #Masetas 53,54,55
-        try:
+        """try:
             x = requests.get(url+"LastHumidity/O")
             x = json.loads(x.text)
             try:
@@ -236,9 +238,9 @@ def lectura_1F_con_promedios():
         except:
             valores[0]=None
             valores[1]=None
-            valores[2]=None
+            valores[2]=None"""
         try:
-            prom_3=mean(d for d in valores if d is not None)
+            prom_3=None#mean(d for d in valores if d is not None)
             print(prom_3)
         except:
             prom_3=None
