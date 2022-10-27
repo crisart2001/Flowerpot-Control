@@ -13,8 +13,8 @@ valores1=['','','']
 
 baja_humedad=15.00
 alta_humedad=20.00
-sleep_time=900 #15 minutos
-delay_time=0.1
+sleep_time=300 #15 minutos
+delay_time=20
 
 def activar_linea(numero_linea):
     #numero_linea
