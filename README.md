@@ -16,7 +16,7 @@ Se crearon funciones para la recolección de los datos dependiendo del tratamien
 
 ### Parámetros
 
-- url: es la dirección por la cual se realizan las operaciones por medio del API ("http://201.207.53.225:3031/api/biocarbon/").
+- url: es la dirección por la cual se realizan las operaciones por medio del API.
 - valores: lista para guardado de valores operado en distintas secciones del programa.
 - valores1: lista para guardado de valores operado en distintas secciones del programa.
 - baja_humedad: representa el límite inferior de valor de humedad, si se encuentra por debajo de este valor se activará la línea.
