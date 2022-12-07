@@ -15,30 +15,14 @@ Se crearon funciones para la recolección de los datos dependiendo del tratamien
 - Analisis_de_condiciones
 - Switches
 
-### 3.2 Módulo top_multicycle_processor
-- Es el módulo encargado de llamar y llevar la sincronía de los demás módulos
+### 1.1 Activar_linea
+- Esta función se encarga de encender una línea de riego, a través de una solicitud a la base de datos.
 
 
-##### Encabezado del módulo.
+##### Encabezado de la función.
 
 ```Python
-module top_multicycle_processor(
-    
-    input   logic               clk_pi,
-                                rst_pi,
-                                PS2Data_pi,
-                                PS2Clk_pi,
-                                miso_pi,
-                    [15 : 0]    sw_pi,                
-    output  logic               locked_po,
-                                tx_po,
-                                cs_ctrl_po,
-                                sck_po,
-                    [6 : 0]     display_po,
-                    [7 : 0]     display_select_po,           
-                    [2 : 0]     rgb_po,
-                    [15 : 0]    leds_po                
-    );
+def activar_linea(numero_linea):
 ```
 
 ##### Parámetros
