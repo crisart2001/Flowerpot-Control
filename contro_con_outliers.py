@@ -4,6 +4,8 @@ from statistics import mean
 import time
 import requests
 import json
+import logging
+logging.basicConfig(filename="log.txt",format='%(asctime)s %(levelname)-8s %(message)s', level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
 def control_con_outliers():
     url = "http://201.207.53.225:3031/api/biocarbon/"
     valores=['','','']
@@ -20,6 +22,7 @@ def control_con_outliers():
             command = "Relays/ON/"+numero_linea
             requests.get(url+command)
             print('Se activo la linea '+numero_linea)
+            logging.info("Se solicito encender la línea "+str(numero_linea))
             time.sleep(delay_time)
             return
             #else :
@@ -37,6 +40,7 @@ def control_con_outliers():
             command = "Relays/OFF/"+numero_linea
             requests.get(url+command)
             print('Se desactivo la linea '+numero_linea)
+            logging.info("Se solicito apagar la línea "+str(numero_linea))
             time.sleep(delay_time)
             return
             #else :
@@ -198,6 +202,7 @@ def control_con_outliers():
                 valores = manejo_outliers(valores[0],valores[1],valores[2],'23, 24 y 25','33, 34 y 35','45, 46 y 47')
                 prom_prom=mean(d for d in valores if d is not None)
                 print('Promedio de promedios tratamiento 0F: ',prom_prom)
+                logging.info("Promedio de promedios tratamiento 0F: "+str(prom_prom))
                 return prom_prom
             except:
                 return 'La red de lectura 0F tiene problemas'
@@ -301,6 +306,7 @@ def control_con_outliers():
                 valores = manejo_outliers(valores[0],valores[1],valores[2],'26, 27 y 28','41, 42 y 43','53, 54 y 55')
                 prom_prom=mean(d for d in valores if d is not None)
                 print('Promedio de promedios tratamiento 1F: ',prom_prom)
+                logging.info("Promedio de promedios tratamiento 1F: "+str(prom_prom))
                 return prom_prom
             except:
                 return 'La red de lectura 1F tiene problemas'
@@ -394,19 +400,24 @@ def control_con_outliers():
                         if(valores[0]>100):
                             print('Las masetas 37, 38 y 39 no tiene dato porcentual.')
                             print('Promedio de promedios 2F: ',valores[1])
+                            logging.info("Promedio de promedios tratamiento 2F: "+str(valores[1]))
                             return valores[1]
                         elif(valores[1]>100):
                             print('Las masetas 50, 51 y 52 no tiene dato porcentual.')
                             print('Promedio de promedios 2F: ',valores[0])
+                            logging.info("Promedio de promedios tratamiento 2F: "+str(valores[0]))
                             return valores[0]
                         else:
                             print('Promedio de promedios 2F: ',prom_prom)
+                            logging.info("Promedio de promedios tratamiento 2F: "+str(prom_prom))
                             return prom_prom
                     else:
                         print('Promedio de promedios tratamiento 2F: ',prom_prom)
+                        logging.info("Promedio de promedios tratamiento 2F: "+str(prom_prom))
                         return prom_prom
                 else:
                     print('Promedio de promedios tratamiento 2F: ',prom_prom)
+                    logging.info("Promedio de promedios tratamiento 2F: "+str(prom_prom))
                     return prom_prom
             except:
                 return 'La red de lectura 2F tiene problemas'
@@ -489,6 +500,7 @@ def control_con_outliers():
                         print('Las macetas 17, 22 y 36 y las macetas 40 y 49 están mostrando datos muy diferentes.')
                 prom_prom=mean(d for d in valores if d is not None)        #,prom_3])
                 print('Promedio de promedios tratamiento BCCON: ',prom_prom)
+                logging.info('Promedio de promedios tratamiento BCCON: '+str(prom_prom))
                 return prom_prom
             except:
                 return 'La red de lectura BCCON tiene problemas'
@@ -530,6 +542,7 @@ def control_con_outliers():
                 print(valores)
                 prom_1=mean(d for d in valores if d is not None)
                 print('Promedio de promedios tratamiento BCCOMCON: ',prom_1)
+                logging.info('Promedio de promedios tratamiento BCCOMCON: '+str(prom_1))
                 return prom_1
             except:
                 return 'La red de lectura BCCOMCON CON tiene problemas'
@@ -580,8 +593,8 @@ def control_con_outliers():
         except:
             print('Error en analisis')
         return
-    time.sleep(sleep_time)
     analisis_de_condiciones()
+    time.sleep(sleep_time)
     control_con_outliers()
     return
 control_con_outliers()
