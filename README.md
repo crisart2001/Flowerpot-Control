@@ -44,7 +44,7 @@ def activar_linea(numero_linea):
 
 - `requests.get(url+command)`: ejecuta la solicitud al servidor de encendido del número de línea establecido.
 
-### 1.2 Desctivar_linea
+### 1.2 Desactivar_linea
 
 - Esta función se encarga de apagar una línea de riego, a través de una solicitud a la base de datos.
 
