@@ -10,7 +10,7 @@ def control_con_outliers():
     valores1=['','',''] 
     baja_humedad=15.00
     alta_humedad=20.00
-    sleep_time=300 #15 minutos
+    sleep_time=300 #5 minutos
     delay_time=20
     def activar_linea(numero_linea):
         #numero_linea
@@ -580,7 +580,7 @@ def control_con_outliers():
         except:
             print('Error en analisis')
         return
-    
+    time.sleep(sleep_time)
     analisis_de_condiciones()
     control_con_outliers()
     return
