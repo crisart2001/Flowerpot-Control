@@ -20,3 +20,4 @@
 2022-12-07 11:44:18 INFO     Promedio de promedios tratamiento 1F: 8.668505518896362
 2022-12-07 11:46:18 INFO     Promedio de promedios tratamiento 2F: 15.100764227230083
 2022-12-07 11:46:19 INFO     Promedio de promedios tratamiento BCCON: 8.7326037692
+2022-12-07 15:28:14 INFO     Promedio de promedios tratamiento 0F: 10.420725700782224
