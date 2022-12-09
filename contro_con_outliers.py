@@ -13,7 +13,7 @@ def control_con_outliers():
     baja_humedad=15.00
     alta_humedad=20.00
     sleep_time=300 #5 minutos
-    delay_time=20
+    delay_time=10
     def activar_linea(numero_linea):
         #numero_linea
         try:
